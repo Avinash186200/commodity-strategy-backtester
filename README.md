@@ -1,10 +1,10 @@
 # Commodity Strategy Backtester
 
+[![CI](https://github.com/Avinash186200/commodity-strategy-backtester/actions/workflows/ci.yml/badge.svg)](https://github.com/Avinash186200/commodity-strategy-backtester/actions/workflows/ci.yml) ![Python](https://img.shields.io/badge/python-3.11-blue) [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
 A backtester for daily rule-based strategies on commodity contracts, with monthly walk-forward parameter selection. Each month it scores every parameter set on the previous five years, trades the best one for the next month only, and builds an out-of-sample record from those monthly picks.
 
 I built the original version as a research pipeline. It ran a library of rule strategies (long and short versions) over a set of commodity contracts, with large parameter grids per strategy. That code, its price data and its results are proprietary and are not in this repo. This is a clean rewrite of the core method. It runs on **synthetic bid/ask price data with the same columns**, so you can clone it and reproduce every number below.
-
-[![CI](../../actions/workflows/ci.yml/badge.svg)](../../actions/workflows/ci.yml)
 
 ## At a glance
 
@@ -83,6 +83,15 @@ python scripts/run_backtest.py --prices your_d1.csv --cost-bps 2
 
 Your price file needs a `date` column, a `Symbol` column and the eight bid/ask OHLC columns.
 
+## Original research code
+
+[`original/`](original/README.md) holds the code as I first wrote it for this work, sanitised and nothing else:
+client, company and person names replaced, credentials and local paths removed, data files and notebook outputs
+dropped. It is kept so the real work can be read alongside the maintained version. Some of it contains the issues
+described above; comparing the two shows each fix.
+
 ## License
 
 MIT
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) and the [CHANGELOG](CHANGELOG.md).
